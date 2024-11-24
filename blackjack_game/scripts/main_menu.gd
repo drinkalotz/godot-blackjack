@@ -6,16 +6,17 @@ extends Node3D
 func _ready() -> void:
 	main_menu_control.visible = true
 	settings_control.visible = false
-	
+
+
 func _on_new_game_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://blackjack_game/scenes/game_table.tscn")
 
 
 func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	match toggled_on:
-		true: 
+		true:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		false: 
+		false:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		_:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
