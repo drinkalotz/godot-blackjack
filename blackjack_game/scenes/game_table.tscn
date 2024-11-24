@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2dr478wxlxt5"]
+
+[ext_resource type="PackedScene" uid="uid://dl11u8jwb2gwh" path="res://assets/models/table/table_fixed.tscn" id="1_asvfr"]
+[ext_resource type="Script" path="res://blackjack_game/scripts/game_table.gd" id="1_y5mwu"]
+
+[node name="game" type="Node3D"]
+transform = Transform3D(0.695, 0, 0, 0, 0.695, 0, 0, 0, 0.695, 0, 0, 0)
+script = ExtResource("1_y5mwu")
+
+[node name="table_mesh" parent="." instance=ExtResource("1_asvfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="spawn1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 0.35)
+
+[node name="left_card_spawn" type="Node3D" parent="spawn1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018, -0.125, -0.154)
+
+[node name="right_card_spawn" type="Node3D" parent="spawn1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018, -0.125, -0.154)
+
+[node name="spawn2" type="Node3D" parent="."]
+visible = false
+
+[node name="spawn3" type="Node3D" parent="."]
+visible = false
+
+[node name="dealer_spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0145612, -0.328114)
+
+[node name="left_card_spawn" type="Node3D" parent="dealer_spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018, 0.019, 0.154)
+
+[node name="right_card_spawn" type="Node3D" parent="dealer_spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018, 0.019, 0.154)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00424108, 0.999991, 0, -0.999991, -0.00424108, -0.27, 0.3, 0)
+light_energy = 0.155
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00424108, 0.999991, 0, -0.999991, -0.00424108, 0.27, 0.3, 0)
+light_energy = 0.155
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1.43885, 0, 0, 0, 0.044618, 1.43816, 0, -1.43816, 0.044618, 0, 0.26033, 0)
+fov = 93.1284

@@ -1,0 +1,196 @@
+[gd_scene load_steps=15 format=3 uid="uid://dqypgqiogw1dm"]
+
+[ext_resource type="PackedScene" uid="uid://nb2soiynechd" path="res://assets/models/chips_fixed/chip-black_white.tscn" id="1_aexg5"]
+[ext_resource type="Script" path="res://blackjack_game/scripts/menu/turn_table.gd" id="1_cti86"]
+[ext_resource type="PackedScene" uid="uid://dvsnjtj8jfqfw" path="res://assets/models/chips_fixed/chip-green-white.tscn" id="1_hpkrm"]
+[ext_resource type="Script" path="res://blackjack_game/scripts/main_menu.gd" id="1_ot23c"]
+[ext_resource type="PackedScene" uid="uid://d3lg76qt4iqit" path="res://assets/models/chips_fixed/chip-red-white.tscn" id="2_j8mhm"]
+[ext_resource type="PackedScene" uid="uid://8hf8g05pc6ka" path="res://assets/models/chips_fixed/chip-blue-white.tscn" id="3_rbuvd"]
+[ext_resource type="PackedScene" uid="uid://br7yr045xaylh" path="res://assets/models/chips_fixed/chip-white-blue.tscn" id="4_5yl3w"]
+[ext_resource type="AudioStream" uid="uid://ckl62xqujtodr" path="res://assets/music/gambler.mp3" id="7_0babe"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_xfp3y"]
+
+[sub_resource type="Sky" id="Sky_4ajkw"]
+sky_material = SubResource("PhysicalSkyMaterial_xfp3y")
+
+[sub_resource type="Environment" id="Environment_o501x"]
+background_mode = 1
+sky = SubResource("Sky_4ajkw")
+ambient_light_source = 2
+ambient_light_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csi1o"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.172549, 0.470588, 0.0784314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uadqe"]
+material = SubResource("StandardMaterial3D_csi1o")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_un77r"]
+font_size = 58
+
+[node name="main_menu" type="Node3D"]
+script = ExtResource("1_ot23c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o501x")
+
+[node name="background" type="Node3D" parent="."]
+
+[node name="table" type="MeshInstance3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_uadqe")
+
+[node name="table2" type="MeshInstance3D" parent="background"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -19.0325, -0.5, 0)
+mesh = SubResource("BoxMesh_uadqe")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, -0.00837745, 0.999965, 0, -0.999965, -0.00837745, 0, 1.46318, 0)
+light_energy = 6.33
+spot_range = 6.86767
+spot_angle = 85.7812
+
+[node name="chips" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.239626, 0, -0.672587)
+script = ExtResource("1_cti86")
+
+[node name="chip_stack_black" type="Node3D" parent="chips"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.663871, 0, 2.23708)
+
+[node name="chip_black_white" parent="chips/chip_stack_black" instance=ExtResource("1_aexg5")]
+
+[node name="chip_black_white2" parent="chips/chip_stack_black" instance=ExtResource("1_aexg5")]
+transform = Transform3D(0.720854, 0.693087, -2.47867e-07, 0, -3.57628e-07, -1, -0.693087, 0.720854, -2.57797e-07, 0, 0.284779, 0)
+
+[node name="chip_black_white3" parent="chips/chip_stack_black" instance=ExtResource("1_aexg5")]
+transform = Transform3D(-0.462878, 0.886422, -3.17009e-07, 0, -3.57628e-07, -1, -0.886422, -0.462878, 1.65538e-07, 0, 0.457217, 0)
+
+[node name="chip_black_white4" parent="chips/chip_stack_black" instance=ExtResource("1_aexg5")]
+transform = Transform3D(-0.434795, 0.832641, 0.34302, -0.158777, 0.30406, -0.939328, -0.886422, -0.462878, 1.4243e-07, -1.5358, 0.423749, 0)
+
+[node name="chip_green" type="Node3D" parent="chips"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3378, 0, -0.548508)
+
+[node name="chip-green-white" parent="chips/chip_green" instance=ExtResource("1_hpkrm")]
+transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0.954831, 0.1, -0.8069)
+
+[node name="chip_stack_red" type="Node3D" parent="chips"]
+transform = Transform3D(0.935216, 0, -0.354079, 0, 1, 0, 0.354079, 0, 0.935216, 0, 0, 0)
+
+[node name="chip-red-white" parent="chips/chip_stack_red" instance=ExtResource("2_j8mhm")]
+transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 3.01228, 0.1, 0)
+
+[node name="chip-red-white3" parent="chips/chip_stack_red" instance=ExtResource("2_j8mhm")]
+transform = Transform3D(0.83147, -0.55557, 1.98687e-07, 0, -3.57628e-07, -1, 0.55557, 0.83147, -2.97357e-07, 3.01228, 0.290407, 0.79991)
+
+[node name="chip-red-white4" parent="chips/chip_stack_red" instance=ExtResource("2_j8mhm")]
+transform = Transform3D(0.142318, -0.989821, 3.53988e-07, 0, -3.57628e-07, -1, 0.989821, 0.142318, -5.08969e-08, 3.01228, 0.485321, 0.767286)
+
+[node name="chip-red-white5" parent="chips/chip_stack_red" instance=ExtResource("2_j8mhm")]
+transform = Transform3D(0.447619, -0.894225, 3.198e-07, 0, -3.57628e-07, -1, 0.894225, 0.447619, -1.60081e-07, 3.01228, 0.67482, 0.827119)
+
+[node name="chip-red-white2" parent="chips/chip_stack_red" instance=ExtResource("2_j8mhm")]
+transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 3.00485, 0.1, 2.00612)
+
+[node name="chip_stack_blue" type="Node3D" parent="chips"]
+
+[node name="chip-blue-white" parent="chips/chip_stack_blue" instance=ExtResource("3_rbuvd")]
+transform = Transform3D(0.173373, -0.984856, 3.52212e-07, 0, -3.57628e-07, -1, 0.984856, 0.173373, -6.20031e-08, -2.98387, 0.1, -0.49981)
+
+[node name="chip-white-blue" parent="chips/chip_stack_blue" instance=ExtResource("4_5yl3w")]
+transform = Transform3D(0.173373, -0.984856, 3.53838e-07, 0.138427, 0.0243682, -0.990073, 0.975079, 0.171652, 0.140556, -2.61685, 0.228661, -1.77852)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.0575641, -0.266795, 0.962032, 0, 0.96363, 0.267238, -0.998342, 0.0153833, -0.0554705, 6.866, 2.392, 3.354)
+
+[node name="main_menu_control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="title" type="Label" parent="Camera3D/main_menu_control"]
+layout_mode = 1
+offset_left = 42.0
+offset_top = 30.0
+offset_right = 301.0
+offset_bottom = 109.0
+text = "Fake Jack"
+label_settings = SubResource("LabelSettings_un77r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/main_menu_control"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 137.0
+offset_right = 249.0
+offset_bottom = 341.0
+theme_override_constants/separation = 27
+
+[node name="new_game_button" type="Button" parent="Camera3D/main_menu_control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "New game"
+alignment = 0
+
+[node name="settings_button" type="Button" parent="Camera3D/main_menu_control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Settings
+"
+alignment = 0
+
+[node name="exit_button" type="Button" parent="Camera3D/main_menu_control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit
+"
+alignment = 0
+
+[node name="settings_control" type="Control" parent="Camera3D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="title" type="Label" parent="Camera3D/settings_control"]
+layout_mode = 1
+offset_left = 42.0
+offset_top = 30.0
+offset_right = 301.0
+offset_bottom = 109.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_un77r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/settings_control"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 137.0
+offset_right = 249.0
+offset_bottom = 341.0
+theme_override_constants/separation = 27
+
+[node name="fullscreen" type="CheckBox" parent="Camera3D/settings_control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Fullscreen"
+
+[node name="back_button" type="Button" parent="Camera3D/settings_control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Back"
+alignment = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0babe")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="pressed" from="Camera3D/main_menu_control/VBoxContainer/new_game_button" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Camera3D/main_menu_control/VBoxContainer/settings_button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Camera3D/main_menu_control/VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="Camera3D/settings_control/VBoxContainer/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="Camera3D/settings_control/VBoxContainer/back_button" to="." method="_on_back_button_pressed"]

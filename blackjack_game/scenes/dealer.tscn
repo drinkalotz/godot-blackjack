@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c657xxsn8wme8"]
+
+[ext_resource type="PackedScene" uid="uid://coup7v1xecoer" path="res://assets/models/dealer/dealer.glb" id="1_bom7d"]
+[ext_resource type="Script" path="res://blackjack_game/scenes/dealer.gd" id="1_kd7sx"]
+
+[node name="dealer" type="Node3D"]
+script = ExtResource("1_kd7sx")
+
+[node name="dealer_label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.194928, 0)
+text = "DEALER"
+font_size = 18
+outline_size = 6
+
+[node name="dealer" parent="." instance=ExtResource("1_bom7d")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)

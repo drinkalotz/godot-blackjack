@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdry1h0vygs8f"]
+
+[ext_resource type="Script" path="res://blackjack_game/scripts/playing_card.gd" id="1_16anu"]
+[ext_resource type="Texture2D" uid="uid://nyuvq60wdbcf" path="res://assets/cards/card_back.png" id="2_eammu"]
+[ext_resource type="Texture2D" uid="uid://bymogkj5knrai" path="res://assets/cards/card_empty.png" id="3_5sil5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qnxl"]
+albedo_texture = ExtResource("2_eammu")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(0.9, 0.9, 0.9)
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_nr3mf"]
+material = SubResource("StandardMaterial3D_2qnxl")
+size = Vector2(0.7, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fi33c"]
+albedo_texture = ExtResource("3_5sil5")
+uv1_scale = Vector3(0.9, 0.9, 0.9)
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_83dda"]
+lightmap_size_hint = Vector2i(5, 7)
+material = SubResource("StandardMaterial3D_fi33c")
+size = Vector2(0.7, 1)
+
+[node name="playing_card" type="Node3D"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 2.2579e-05, 0)
+script = ExtResource("1_16anu")
+
+[node name="back" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00315891, -0.999995, 0, 0.999995, -0.00315891, 0, 0, 0)
+mesh = SubResource("QuadMesh_nr3mf")
+
+[node name="front" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.003159, 0.999995, 0, -0.999995, 0.003159, -0.00558257, 0, -0.000734925)
+mesh = SubResource("QuadMesh_83dda")
