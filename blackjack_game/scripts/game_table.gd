@@ -154,12 +154,14 @@ func dealer_busted():
 func dealer_at_limit():
 	var dealer = game_state.players[1]
 	var player = game_state.players[0]
-	var max_dealer = max(dealer.entity.dealer_score, dealer.entity.alt_dealer_score)
-	var max_player = max(player.entity.player_score, player.entity.alt_player_score)
+	var max_dealer = get_max_score(dealer.entity.dealer_score, dealer.entity.alt_dealer_score)
+	var max_player = get_max_score(player.entity.player_score, player.entity.alt_player_score)
 	if max_dealer > max_player:
 		player_busted()
-	else:
+	elif max_dealer < max_player:
 		dealer_busted()
+	else:
+		draw()
 func reset_game():
 	for player in game_state.players:
 		for card in player.cards:
