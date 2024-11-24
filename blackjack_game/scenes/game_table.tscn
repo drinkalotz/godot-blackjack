@@ -7,17 +7,17 @@
 transform = Transform3D(0.695, 0, 0, 0, 0.695, 0, 0, 0, 0.695, 0, 0, 0)
 script = ExtResource("1_y5mwu")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1.43885, 0, 0, 0, 0.00733291, 1.43883, 0, -1.43883, 0.00733291, 0, 2.83554, 0)
+
 [node name="table_mesh" parent="." instance=ExtResource("1_asvfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="spawn1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 0.35)
 
-[node name="left_card_spawn" type="Node3D" parent="spawn1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018, -0.125, -0.154)
-
-[node name="right_card_spawn" type="Node3D" parent="spawn1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018, -0.125, -0.154)
+[node name="card_spawn" type="Node3D" parent="spawn1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, -0.125, -0.154)
 
 [node name="spawn2" type="Node3D" parent="."]
 visible = false
@@ -28,20 +28,29 @@ visible = false
 [node name="dealer_spawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0145612, -0.328114)
 
-[node name="left_card_spawn" type="Node3D" parent="dealer_spawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018, 0.019, 0.154)
-
-[node name="right_card_spawn" type="Node3D" parent="dealer_spawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018, 0.019, 0.154)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.00424108, 0.999991, 0, -0.999991, -0.00424108, -0.27, 0.3, 0)
-light_energy = 0.155
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.00424108, 0.999991, 0, -0.999991, -0.00424108, 0.27, 0.3, 0)
-light_energy = 0.155
+[node name="card_spawn" type="Node3D" parent="dealer_spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 0.019, 0.154)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1.43885, 0, 0, 0, 0.044618, 1.43816, 0, -1.43816, 0.044618, 0, 0.26033, 0)
 fov = 93.1284
+
+[node name="playing_deck_spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0198062, 0)
+
+[node name="outcome" type="Label" parent="."]
+visible = false
+offset_left = 437.0
+offset_top = 243.0
+offset_right = 696.0
+offset_bottom = 298.0
+theme_override_font_sizes/font_size = 40
+text = "DEALER WON"
+
+[node name="receive_card_timer" type="Timer" parent="."]
+
+[node name="dealer_score" type="Label" parent="."]
+offset_left = 521.0
+offset_top = 3.0
+offset_right = 561.0
+offset_bottom = 26.0
