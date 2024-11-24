@@ -22,7 +22,7 @@ func _ready() -> void:
 	game_esc_menu.visible = false
 	bust.connect(player_busted)
 	score_label.text = score_label_text.format({"score": player_score, "alt_score": alt_player_score})
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_won or player_lost:
 		playing.visible = false
 		restart.visible = true

@@ -95,7 +95,7 @@ func create_deck():
 				score = 10
 			elif score_string == "A":
 				score = 1
-				alt_score = 10
+				alt_score = 11
 			else:
 				score = score_string as int
 			result.append({"card": file, "score": score, "alt_score": alt_score, "is_ace": alt_score > 0})
@@ -110,12 +110,21 @@ func player_hit():
 	var random_card = current_playing_deck[random_index]
 	current_playing_deck.remove_at(random_index)
 	receive_card(random_card, player, player.entity.name == "dealer")
+	
+func get_max_score(score1: int, score2: int) -> int:
+	if score1 > 21 and score2 > 21:
+		return min(score1, score2)
+	if score1 > 21: 
+		return score2
+	if score2 > 21:
+		return score1
+	return max(score1, score2)
 func dealer_play():
 	is_dealer_playing = true
 	var dealer = game_state.players[1]
 	var player = game_state.players[0]
-	var max_dealer = max(dealer.entity.dealer_score, dealer.entity.alt_dealer_score)
-	var max_player = max(player.entity.player_score, player.entity.alt_player_score)
+	var max_dealer = get_max_score(dealer.entity.dealer_score, dealer.entity.alt_dealer_score)
+	var max_player = get_max_score(player.entity.player_score, player.entity.alt_player_score)
 	for card in dealer.cards:
 		card.rotation_degrees = Vector3(0, 0, 0)
 	while dealer.entity.dealer_score != 16 and dealer.entity.alt_dealer_score != 16 and not dealer.entity.is_bust and max_dealer < max_player:
@@ -127,7 +136,6 @@ func dealer_play():
 		player_busted()
 	elif max_dealer == max_player:
 		draw()
-	print('dealer playing')
 func player_stand():
 	dealer_play()
 func player_busted():
